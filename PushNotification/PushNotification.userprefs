@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{56A56F17-7DE1-4CA1-9617-BF32E971AC84}|Default">
   <MonoDevelop.Ide.ItemProperties.PushNotification.Plugin.Android PreferredExecutionTarget="Android.192.168.57.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PushNotification/PushNotification.Plugin/CrossPushNotification.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="PushNotification/PushNotification.Plugin.Android/PushNotificationGcmListener.cs">
     <Files>
       <File FileName="PushNotification/PushNotification.Plugin.Android/packages.config" Line="10" Column="18" />
       <File FileName="PushNotification/PushNotification.Plugin.Android/PushNotificationImplementation.cs" Line="105" Column="41" />
@@ -14,9 +14,11 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PushNotification" expanded="True">
-            <Node name="PushNotification.Plugin.iOS" expanded="True">
-              <Node name="CrossPushNotification.cs" selected="True" />
+            <Node name="PushNotification.Plugin" expanded="True" />
+            <Node name="PushNotification.Plugin.Android" expanded="True">
+              <Node name="PushNotificationGcmListener.cs" selected="True" />
             </Node>
+            <Node name="PushNotification.Plugin.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>
