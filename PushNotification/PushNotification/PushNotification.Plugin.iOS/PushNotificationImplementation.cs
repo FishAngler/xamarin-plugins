@@ -2,8 +2,8 @@
 using Foundation;
 using UIKit;
 #else
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 #endif
 using PushNotification.Plugin.Abstractions;
 using System;

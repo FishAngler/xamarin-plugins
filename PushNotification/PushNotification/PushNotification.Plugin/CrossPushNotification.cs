@@ -1,4 +1,4 @@
-﻿using PushNotification.Plugin.Abstractions;
+using PushNotification.Plugin.Abstractions;
 using System;
 using System.Diagnostics;
 using Newtonsoft.Json;

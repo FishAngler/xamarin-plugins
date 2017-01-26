@@ -15,10 +15,9 @@ using Android.Preferences;
 using Android.Support.V4.App;
 using Android.Media;
 using Android;
-using Android.Gms.Gcm.Iid;
 using System.Threading;
 using Java.IO;
-
+using Android.Gms.Iid;
 
 namespace PushNotification.Plugin
 {

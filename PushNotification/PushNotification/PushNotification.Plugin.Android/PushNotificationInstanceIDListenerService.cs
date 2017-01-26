@@ -9,9 +9,9 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Android.Gms.Gcm.Iid;
 using System.Threading;
 using PushNotification.Plugin.Abstractions;
+using Android.Gms.Iid;
 
 namespace PushNotification.Plugin
 {
