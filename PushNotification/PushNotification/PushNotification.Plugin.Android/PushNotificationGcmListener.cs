@@ -20,7 +20,7 @@ namespace PushNotification.Plugin
     /// <summary>
     /// Push Notification Message Handler
     /// </summary>
-    [Service(Exported = false, Name = "pushnotification.plugin.PushNotificationGcmListener")]
+    [Service(Exported=false, Name="pushnotification.plugin.PushNotificationGcmListener")]
     [IntentFilter(new string[] { "com.google.android.c2dm.intent.RECEIVE" }, Categories = new string[] { "@PACKAGE_NAME@" })]
     public class PushNotificationGcmListener : GcmListenerService
     {
@@ -29,75 +29,75 @@ namespace PushNotification.Plugin
         /// </summary>
         /// <param name="from"></param>
         /// <param name="extras"></param>
-        public override void OnMessageReceived(string from, Bundle extras)
+        public override void OnMessageReceived(string from,Bundle extras)
         {
             if (extras != null && !extras.IsEmpty)
             {
+              
+                    System.Diagnostics.Debug.WriteLine($"{PushNotificationKey.DomainName} - GCM Listener - Push Received");
 
-                System.Diagnostics.Debug.WriteLine($"{PushNotificationKey.DomainName} - GCM Listener - Push Received");
+                    var parameters = new Dictionary<string, object>();
+                    var values = ProcessBundle(extras, parameters);
 
-                var parameters = new Dictionary<string, object>();
-                var values = ProcessBundle(extras, parameters);
+                    Context context = Android.App.Application.Context;
 
-                Context context = Android.App.Application.Context;
+                    CrossPushNotification.PushNotificationListener.OnMessage(values, DeviceType.Android);
 
-                CrossPushNotification.PushNotificationListener.OnMessage(values, DeviceType.Android);
-
-                try
-                {
-                    int notifyId = 0;
-                    string title = context.ApplicationInfo.LoadLabel(context.PackageManager);
-                    string message = "";
-                    string tag = "";
-
-                    if (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentTextKey) && parameters.ContainsKey(CrossPushNotification.NotificationContentTextKey))
+                    try
                     {
-                        message = parameters[CrossPushNotification.NotificationContentTextKey].ToString();
-                    }
-                    else if (parameters.ContainsKey(PushNotificationKey.Alert))
-                    {
-                        message = parameters[PushNotificationKey.Alert].ToString();
-                    }
-                    else if (parameters.ContainsKey(PushNotificationKey.Message))
-                    {
-                        message = parameters[PushNotificationKey.Message].ToString();
-                    }
-                    else if (parameters.ContainsKey(PushNotificationKey.Subtitle))
-                    {
-                        message = parameters[PushNotificationKey.Subtitle].ToString();
-                    }
-                    else if (parameters.ContainsKey(PushNotificationKey.Text))
-                    {
-                        message = parameters[PushNotificationKey.Text].ToString();
-                    }
+                        int notifyId = 0;
+                        string title = context.ApplicationInfo.LoadLabel(context.PackageManager);
+                        string message = "";
+                        string tag = "";
 
-                    if (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentTitleKey) && parameters.ContainsKey(CrossPushNotification.NotificationContentTitleKey))
-                    {
-                        title = parameters[CrossPushNotification.NotificationContentTitleKey].ToString();
-
-                    }
-                    else if (parameters.ContainsKey(PushNotificationKey.Title))
-                    {
-
-                        if (!string.IsNullOrEmpty(message))
+                        if (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentTextKey) && parameters.ContainsKey(CrossPushNotification.NotificationContentTextKey))
                         {
-                            title = parameters[PushNotificationKey.Title].ToString();
+                            message = parameters[CrossPushNotification.NotificationContentTextKey].ToString();
                         }
-                        else
+                        else if (parameters.ContainsKey(PushNotificationKey.Alert))
                         {
-                            message = parameters[PushNotificationKey.Title].ToString();
+                            message = parameters[PushNotificationKey.Alert].ToString();
                         }
-                    }
+                        else if (parameters.ContainsKey(PushNotificationKey.Message))
+                        {
+                            message = parameters[PushNotificationKey.Message].ToString();
+                        }
+                        else if (parameters.ContainsKey(PushNotificationKey.Subtitle))
+                        {
+                            message = parameters[PushNotificationKey.Subtitle].ToString();
+                        }
+                        else if (parameters.ContainsKey(PushNotificationKey.Text))
+                        {
+                            message = parameters[PushNotificationKey.Text].ToString();
+                        }
 
+                        if (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentTitleKey) && parameters.ContainsKey(CrossPushNotification.NotificationContentTitleKey))
+                        {
+                            title = parameters[CrossPushNotification.NotificationContentTitleKey].ToString();
 
-                    if (string.IsNullOrEmpty(message))
-                    {
-                        var data = (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentDataKey) && values[CrossPushNotification.NotificationContentDataKey] != null) ? values[CrossPushNotification.NotificationContentDataKey] : values[PushNotificationKey.Data];
-
-                        if (data != null)
+                        }
+                        else if (parameters.ContainsKey(PushNotificationKey.Title))
                         {
 
-                            if (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentTextKey) && data[CrossPushNotification.NotificationContentTextKey] != null)
+                            if (!string.IsNullOrEmpty(message))
+                            {
+                                title = parameters[PushNotificationKey.Title].ToString();
+                            }
+                            else
+                            {
+                                message = parameters[PushNotificationKey.Title].ToString();
+                            }
+                        }
+
+                
+                        if (string.IsNullOrEmpty(message))
+                        {
+                           var data = (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentDataKey) && values[CrossPushNotification.NotificationContentDataKey] != null) ? values[CrossPushNotification.NotificationContentDataKey] : values[PushNotificationKey.Data];
+
+                           if (data != null)
+                           {
+
+                            if (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentTextKey) && data[CrossPushNotification.NotificationContentTextKey]!=null)
                             {
                                 message = data[CrossPushNotification.NotificationContentTextKey].ToString();
                             }
@@ -113,17 +113,17 @@ namespace PushNotification.Plugin
                             {
                                 message = data[PushNotificationKey.Subtitle].ToString();
                             }
-                            else if (data[PushNotificationKey.Text] != null)
+                            else if (data[PushNotificationKey.Text]!=null)
                             {
                                 message = data[PushNotificationKey.Text].ToString();
                             }
 
-                            if (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentTitleKey) && data[CrossPushNotification.NotificationContentTitleKey] != null)
+                            if (!string.IsNullOrEmpty(CrossPushNotification.NotificationContentTitleKey) && data[CrossPushNotification.NotificationContentTitleKey]!=null)
                             {
                                 title = data[CrossPushNotification.NotificationContentTitleKey].ToString();
 
                             }
-                            else if (data[PushNotificationKey.Title] != null)
+                            else if (data[PushNotificationKey.Title]!=null)
                             {
 
                                 if (!string.IsNullOrEmpty(message))
@@ -138,44 +138,44 @@ namespace PushNotification.Plugin
 
                         }
                     }
-
-
+                        
+                    
                     if (parameters.ContainsKey(PushNotificationKey.Id))
-                    {
-                        var str = parameters[PushNotificationKey.Id].ToString();
-                        try
                         {
-                            notifyId = Convert.ToInt32(str);
+                            var str = parameters[PushNotificationKey.Id].ToString();
+                            try
+                            {
+                                notifyId = Convert.ToInt32(str);
+                            }
+                            catch (System.Exception ex)
+                            {
+                                // Keep the default value of zero for the notify_id, but log the conversion problem.
+                                System.Diagnostics.Debug.WriteLine("Failed to convert {0} to an integer", str);
+                            }
                         }
-                        catch (System.Exception ex)
+                        if (parameters.ContainsKey(PushNotificationKey.Tag))
                         {
-                            // Keep the default value of zero for the notify_id, but log the conversion problem.
-                            System.Diagnostics.Debug.WriteLine("Failed to convert {0} to an integer", str);
+                            tag = parameters[PushNotificationKey.Tag].ToString();
                         }
-                    }
-                    if (parameters.ContainsKey(PushNotificationKey.Tag))
-                    {
-                        tag = parameters[PushNotificationKey.Tag].ToString();
-                    }
 
-                    if (!parameters.ContainsKey(PushNotificationKey.Silent) || !System.Boolean.Parse(parameters[PushNotificationKey.Silent].ToString()))
-                    {
-                        if (CrossPushNotification.PushNotificationListener.ShouldShowNotification())
+                        if (!parameters.ContainsKey(PushNotificationKey.Silent) || !System.Boolean.Parse(parameters[PushNotificationKey.Silent].ToString()))
                         {
-                            CreateNotification(title, message, notifyId, tag, extras);
+                            if (CrossPushNotification.PushNotificationListener.ShouldShowNotification())
+                            {
+                                CreateNotification(title, message, notifyId, tag, extras);
+                            }
                         }
+
                     }
-
-                }
-                catch (Java.Lang.Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex.ToString());
-                }
-                catch (System.Exception ex1)
-                {
-                    System.Diagnostics.Debug.WriteLine(ex1.ToString());
-                }
-
+                    catch (Java.Lang.Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex.ToString());
+                    }
+                    catch (System.Exception ex1)
+                    {
+                        System.Diagnostics.Debug.WriteLine(ex1.ToString());
+                    }
+                
 
 
             }
@@ -254,12 +254,12 @@ namespace PushNotification.Plugin
 
             //Intent resultIntent = new Intent(context, typeof(T));
 
-            if (extras != null) { resultIntent.PutExtras(extras); }
+             if (extras != null) { resultIntent.PutExtras(extras); }
 
             // Create a PendingIntent; we're only using one PendingIntent (ID = 0):
             const int pendingIntentId = 0;
             var currentMillis = (long)DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-            PendingIntent resultPendingIntent = PendingIntent.GetActivity(context, pendingIntentId, resultIntent, PendingIntentFlags.OneShot | PendingIntentFlags.UpdateCurrent);
+            PendingIntent resultPendingIntent = PendingIntent.GetActivity(context, pendingIntentId, resultIntent, PendingIntentFlags.OneShot | PendingIntentFlags.UpdateCurrent );
             //resultPendingIntent.SetAction($"{currentMillis}");
             // Build the notification
             builder = new NotificationCompat.Builder(context)
@@ -270,13 +270,12 @@ namespace PushNotification.Plugin
                       .SetSmallIcon(CrossPushNotification.IconResource) // This is the icon to display
                       .SetContentText(message); // the message to display.
 
-            if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.JellyBean)
-            {
-                // Using BigText notification style to support long message
-                var style = new NotificationCompat.BigTextStyle();
-                style.BigText(message);
-                builder.SetStyle(style);
-            }
+			if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.JellyBean) {
+				// Using BigText notification style to support long message
+				var style = new NotificationCompat.BigTextStyle ();
+				style.BigText (message);
+				builder.SetStyle (style);
+			}
 
             NotificationManager notificationManager = (NotificationManager)context.GetSystemService(Context.NotificationService);
             notificationManager.Notify(tag, notifyId, builder.Build());

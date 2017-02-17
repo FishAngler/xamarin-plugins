@@ -8,12 +8,9 @@ namespace PushNotification.Plugin.Abstractions
   /// </summary>
   public interface IPushNotification
   {
-
-	  string Token { get; }
-      void Register();
-      void Unregister();
-
- 
+        bool MustRefreshRegistration { get; set; }     
+	    string Token { get; }
+        void Register();
+        void Unregister();
   }
-
 }

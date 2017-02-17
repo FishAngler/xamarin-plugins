@@ -1,32 +1,28 @@
 ﻿<Properties StartupConfiguration="{56A56F17-7DE1-4CA1-9617-BF32E971AC84}|Default">
-  <MonoDevelop.Ide.ItemProperties.PushNotification.Plugin.Android PreferredExecutionTarget="Android.192.168.57.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="PushNotification/PushNotification.Plugin.Android/PushNotificationGcmListener.cs">
+  <MonoDevelop.Ide.ItemProperties.PushNotification.Plugin.Android PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="PushNotification/PushNotification.Plugin/CrossPushNotification.cs">
     <Files>
-      <File FileName="PushNotification/PushNotification.Plugin.Android/packages.config" Line="10" Column="18" />
-      <File FileName="PushNotification/PushNotification.Plugin.Android/PushNotificationImplementation.cs" Line="105" Column="41" />
-      <File FileName="PushNotification/PushNotification.Plugin.Android/PushNotificationInstanceIDListenerService.cs" Line="29" Column="30" />
-      <File FileName="PushNotification/PushNotification.Plugin.Android/PushNotificationRegistrationIntentService.cs" Line="37" Column="12" />
-      <File FileName="../../../../../Library/Frameworks/Xamarin.iOS.framework/Versions/10.3.1.8/lib/mono/2.1/Xamarin.iOS.Common.targets" Line="21" Column="14" />
-      <File FileName="PushNotification/PushNotification.Plugin.Android/PushNotificationGcmListener.cs" Line="254" Column="37" />
-      <File FileName="PushNotification/PushNotification.Plugin/CrossPushNotification.cs" Line="1" Column="1" />
+      <File FileName="../../mobileapp/FishAngler.iOS/Controls/CacheableImageView.cs" Line="28" Column="36" />
+      <File FileName="../../mobileapp/FishAngler.Droid/Controls/CacheableImageView.cs" Line="1" Column="1" />
+      <File FileName="../../mobileapp/FishAngler.Droid/Util/CacheableImageTouchHelper.cs" Line="1" Column="1" />
+      <File FileName="../../mobileapp/FishAngler.UI.Tests/SmokeTest/Home.cs" Line="53" Column="13" />
+      <File FileName="../../mobileapp/FishAngler.Droid/Adapters/TackleGearAdapter.cs" Line="1" Column="1" />
+      <File FileName="../../mobileapp/FishAngler.Droid/packages.config" Line="1" Column="1" />
+      <File FileName="../../mobileapp/FishAngler.Droid/Resources/values/Styles.xml" Line="2" Column="1" />
+      <File FileName="PushNotification/PushNotification.Plugin/CrossPushNotification.cs" Line="16" Column="24" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="PushNotification" expanded="True">
-            <Node name="PushNotification.Plugin" expanded="True" />
-            <Node name="PushNotification.Plugin.Android" expanded="True">
-              <Node name="PushNotificationGcmListener.cs" selected="True" />
-            </Node>
-            <Node name="PushNotification.Plugin.iOS" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/claudioredi/sources/xamarin-plugins/PushNotification/PushNotification/PushNotification.Plugin.Android/PushNotificationImplementation.cs" line="51" column="1" />
+      <Breakpoint file="/Users/claudioredi/sources/mobileapp/FishAngler.Droid/Controls/CacheableImageView.cs" line="1532" column="1" />
+      <Breakpoint file="/Users/claudioredi/sources/mobileapp/FishAngler.Droid/Controls/CacheableImageView.cs" line="1309" column="1" />
+      <Breakpoint file="/Users/claudioredi/sources/mobileapp/FishAngler.Core/ViewModels/AnglerProfile/AnglerProfileHomeViewModel.cs" line="388" column="1" />
+      <Breakpoint file="/Users/claudioredi/sources/mobileapp/FishAngler.Core/ViewModels/AnglerProfile/AnglerProfileHomeViewModel.cs" line="355" column="1" />
+      <Breakpoint file="/Users/claudioredi/sources/mobileapp/FishAngler.Core/ViewModels/AnglerProfile/AnglerProfileHomeViewModel.cs" line="278" column="46" />
+      <Breakpoint file="/Users/claudioredi/sources/mobileapp/FishAngler.Core/Helpers/CrossPushNotificationListener.cs" line="100" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="..\..\..\..\Users\rdelrosario\Projects\Cfv\Cfv\ViewModels\BaseCollectionViewModel.cs" line="52" offsetX="401" offsetY="765" expression="response" liveUpdate="False" />

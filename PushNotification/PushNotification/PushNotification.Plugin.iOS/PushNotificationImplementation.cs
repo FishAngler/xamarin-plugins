@@ -27,7 +27,19 @@ namespace PushNotification.Plugin
 
 		}
 
-		public void Register()
+        public bool MustRefreshRegistration
+        {
+            get
+            {
+                return false;
+            }
+            set 
+            {
+                
+            }
+        }
+
+        public void Register()
 		{
 
 			if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))

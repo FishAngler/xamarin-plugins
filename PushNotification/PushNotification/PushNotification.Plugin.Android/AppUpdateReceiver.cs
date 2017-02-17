@@ -18,7 +18,7 @@ namespace PushNotification.Plugin
         public override void OnReceive(Context context, Intent intent)
         {
             if (CrossPushNotification.IsInitialized)
-                CrossPushNotification.Current.Register();
+                CrossPushNotification.Current.MustRefreshRegistration = true;
         }
     }
 }

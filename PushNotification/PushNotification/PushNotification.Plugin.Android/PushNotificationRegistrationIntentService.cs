@@ -9,10 +9,10 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Gms.Gcm.Iid;
 using Android.Gms.Gcm;
 using PushNotification.Plugin.Abstractions;
 using Android.Support.V4.Content;
-using Android.Gms.Iid;
 
 namespace PushNotification.Plugin
 {
@@ -48,6 +48,8 @@ namespace PushNotification.Plugin
 
                     string token = instanceID.GetToken(CrossPushNotification.SenderId,
                         GoogleCloudMessaging.InstanceIdScope, null);
+
+                    CrossPushNotification.Current.MustRefreshRegistration = false;
 
                     CrossPushNotification.PushNotificationListener.OnRegistered(token, DeviceType.Android);
                     PushNotificationImplementation.StoreRegistrationId(Android.App.Application.Context, token);
